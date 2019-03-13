@@ -46,10 +46,17 @@
   [TrustKit setLoggerBlock:^(NSString * _Nonnull log) {
     NSLog(@"%@", log);
   }];
-  FIRAuth *auth = [FIRAuth new];
-  [auth signInWithCustomToken:@"some token" completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
-    NSLog(@"%@", @"done");
+
+  FIRStorage *storage = [FIRStorage storage];
+  FIRStorageReference *exampleImageRef = [storage referenceForURL:@"gs://test-90d08.appspot.com/example.png"];
+  [exampleImageRef dataWithMaxSize:1 * 1024 * 1024 completion:^(NSData *data, NSError *error){
+    if (error != nil) {
+      NSLog(@"%@", @"done");
+    } else {
+      UIImage *exampleImage = [UIImage imageWithData:data];
+    }
   }];
+  
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   
   UIViewController *rootViewController = [UIViewController new];

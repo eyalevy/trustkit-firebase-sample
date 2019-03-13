@@ -19,20 +19,6 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
-
-  componentDidMount(){
-    fetch('https://www.google.com')
-    .then(function(response) {
-      console.warn("Here")
-      return response.json();
-    })
-    .then(function(myJson) {
-      console.log(JSON.stringify(myJson));
-    })
-    .catch(function(x){
-      console.warn("Here2",x)
-    });
-  }
   
   render() {
     return (
