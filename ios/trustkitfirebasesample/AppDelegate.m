@@ -47,7 +47,7 @@
     NSLog(@"%@", log);
   }];
   FIRAuth *auth = [FIRAuth new];
-  [auth signInWithCustomToken:@"some token" completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
+  [auth signInWithCustomToken:@"some token"completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
     NSLog(@"%@", @"done");
   }];
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
